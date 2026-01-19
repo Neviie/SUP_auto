@@ -1,0 +1,1139 @@
+[
+  {
+    "route": "1",
+    "transport": "bus",
+    "carrier": "ООО «Ярославская транспортная компания-2»",
+    "phones": [
+      "+7 915 971 22 13"
+    ],
+    "emails": [
+      "perm@gtranscomp.ru"
+    ],
+    "inn": "7604169771",
+    "routeName": "1, М/р Садовый - станция Пермь II"
+  },
+  {
+    "route": "2",
+    "transport": "bus",
+    "carrier": "ООО «АААвто»",
+    "phones": [
+      "+7 (342) 294 34 34",
+      "+7 901 265 34 34"
+    ],
+    "emails": [
+      "aaavto2014@mail.ru"
+    ],
+    "inn": "5948995243",
+    "routeName": "2, Станция Осенцы - Стахановское кольцо"
+  },
+  {
+    "route": "3",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "3, ОАО \"Велта\" - ОАО \"Красный октябрь\""
+  },
+  {
+    "route": "4",
+    "transport": "bus",
+    "carrier": "ООО «Сити-Бас»",
+    "phones": [
+      "+7 908 271 57 14"
+    ],
+    "emails": [
+      "virag27@mail.ru"
+    ],
+    "inn": "5948041350",
+    "routeName": "4, Ст. Пермь-2 - м/р Висим"
+  },
+  {
+    "route": "5",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 958 142 99 30"
+    ],
+    "emails": [
+      "ooodizel@internet.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "5, Ст.Пермь-2 - ст.Бахаревка"
+  },
+  {
+    "route": "6",
+    "transport": "bus",
+    "carrier": "ООО «Райзен»",
+    "phones": [
+      "+7 922 302 60 23"
+    ],
+    "emails": [
+      "raizenperm@mail.ru"
+    ],
+    "inn": "5904143562",
+    "routeName": "6, М/р Железнодорожный - станция Пермь-2"
+  },
+  {
+    "route": "7",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "7, Ст. Пермь-2 - ОАО \"Вагоноремонтный завод\""
+  },
+  {
+    "route": "8",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "8, АО \"Инкар\" - м/р Висим"
+  },
+  {
+    "route": "9",
+    "transport": "bus",
+    "carrier": "ИП Миронов Д.В.",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "590301952678",
+    "routeName": "9, М/р Хмели - м/р Нагорный - Субботино"
+  },
+  {
+    "route": "10",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "10, М/р Садовый - м/р Нагорный"
+  },
+  {
+    "route": "11",
+    "transport": "bus",
+    "carrier": "ИП Стерлягов А.М.",
+    "phones": [
+      "+7 991 815 07 20"
+    ],
+    "emails": [
+      "amsperm78@mail.ru"
+    ],
+    "inn": "590299603613",
+    "routeName": "11, Станция Пермь-II - м/р Висим"
+  },
+  {
+    "route": "12",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 958 142 99 30"
+    ],
+    "emails": [
+      "ooodizel@internet.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "12, Школа 107 - Пермская Ярмарка"
+  },
+  {
+    "route": "13",
+    "transport": "bus",
+    "carrier": "ООО «АААвто»",
+    "phones": [
+      "+7 (342) 294 34 34",
+      "+7 901 265 34 34"
+    ],
+    "emails": [
+      "aaavto2014@mail.ru"
+    ],
+    "inn": "5948995243",
+    "routeName": "13, Песьянка - Планета - М/р Садовый"
+  },
+  {
+    "route": "14",
+    "transport": "bus",
+    "carrier": "ООО «Ярославская транспортная компания-2»",
+    "phones": [
+      "+7 915 971 22 13"
+    ],
+    "emails": [
+      "perm@gtranscomp.ru"
+    ],
+    "inn": "5906056650",
+    "routeName": "14, М/р Заостровка - м/р Юбилейный"
+  },
+  {
+    "route": "15",
+    "transport": "bus",
+    "carrier": "ООО «Ярославская транспортная компания-2»",
+    "phones": [
+      "+7 915 971 22 13"
+    ],
+    "emails": [
+      "perm@gtranscomp.ru"
+    ],
+    "inn": "7604169771",
+    "routeName": "15, Южная - ДДК им.Кирова - Центральный рынок"
+  },
+  {
+    "route": "16",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "16, М/р Владимирский - м/р Запруд"
+  },
+  {
+    "route": "17",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "17, Пл. Дружбы - ул. 1905 года - м/р Висим-2"
+  },
+  {
+    "route": "18",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "18, Пермский военный институт - пл. Дружбы"
+  },
+  {
+    "route": "19",
+    "transport": "bus",
+    "carrier": "ИП Кирсанов А.И.",
+    "phones": [
+      "+7 (342) 203 12 31"
+    ],
+    "emails": [
+      "avto.perm159@mail.ru"
+    ],
+    "inn": "590500165192",
+    "routeName": "19, М/р Липовая гора - М/р Парковый - Тенториум"
+  },
+  {
+    "route": "20",
+    "transport": "bus",
+    "carrier": "ООО «Компас»",
+    "phones": [
+      "+7 922 642 62 00"
+    ],
+    "emails": [
+      "compas.perm@yandex.ru"
+    ],
+    "inn": "5904131704",
+    "routeName": "20, М/р Новый Крым - Центральный рынок"
+  },
+  {
+    "route": "22",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "22, М/р Васильевка - Пермский военный институт"
+  },
+  {
+    "route": "23",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "23, Банная гора - деревня Голованово"
+  },
+  {
+    "route": "24",
+    "transport": "bus",
+    "carrier": "ИП Иванов В.А.",
+    "phones": [
+      "+7 (342) 242 23 95"
+    ],
+    "emails": [
+      "ivanov.53@mail.ru"
+    ],
+    "inn": "590400162529",
+    "routeName": "24, М/р Левшино - пл. Дружбы"
+  },
+  {
+    "route": "26",
+    "transport": "bus",
+    "carrier": "ИП Плотников В.А.",
+    "phones": [
+      "+7 (342) 261 21 20"
+    ],
+    "emails": [
+      "auto.bus@mail.ru"
+    ],
+    "inn": "590415436780",
+    "routeName": "26, М/р Центральная усадьба - ул. Ушинского - м/р Крольчатник"
+  },
+  {
+    "route": "27",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "27, Пл. Дружбы - м/р Нагорный"
+  },
+  {
+    "route": "28",
+    "transport": "bus",
+    "carrier": "ИП Плотников В.А.",
+    "phones": [
+      "+7 (342) 261 21 20"
+    ],
+    "emails": [
+      "auto.bus@mail.ru"
+    ],
+    "inn": "590415436780",
+    "routeName": "28, Ул. Милиционера Власова - театр \"Ироничная компания\" - Планета (кольцевой)"
+  },
+  {
+    "route": "29",
+    "transport": "bus",
+    "carrier": "ИП Плотников В.А.",
+    "phones": [
+      "+7 (342) 261 21 20"
+    ],
+    "emails": [
+      "auto.bus@mail.ru"
+    ],
+    "inn": "590415436780",
+    "routeName": "29, Планета  - театр \"Ироничная компания\" - ул. Милиционера Власова (кольцевой)"
+  },
+  {
+    "route": "31",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "31, Комсомольская площадь - мкр. Краснова - мкр. Липовая гора"
+  },
+  {
+    "route": "32",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "32, М/р Васильевка - Центральный рынок"
+  },
+  {
+    "route": "33",
+    "transport": "bus",
+    "carrier": "ИП Миронов Д.В.",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "590301952678",
+    "routeName": "33, Город Сердца - м/р Костарёво"
+  },
+  {
+    "route": "34",
+    "transport": "bus",
+    "carrier": "ИП Иванов В.А.",
+    "phones": [
+      "+7 (342) 242 23 95"
+    ],
+    "emails": [
+      "ivanov.53@mail.ru"
+    ],
+    "inn": "590400162529",
+    "routeName": "34, М/р Новые Ляды - ул. 1905 года"
+  },
+  {
+    "route": "35",
+    "transport": "bus",
+    "carrier": "ИП Миронов Д.В.",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "590301952678",
+    "routeName": "35, улица Крисанова - Пермский электромеханический завод"
+  },
+  {
+    "route": "36",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "36, Театр \"Ироничная компания\" - м/р Вышка-2 - м/р Вышка-1"
+  },
+  {
+    "route": "37",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "37, Ул. Ушинского - м/р Висим"
+  },
+  {
+    "route": "38",
+    "transport": "bus",
+    "carrier": "ИП Миронов Д.В.",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "590301952678",
+    "routeName": "38, М/р Запруд-2 - м/р Гарцы - пл. Дружбы"
+  },
+  {
+    "route": "39",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "39, М/р Оборино - Ласьвинские хутора"
+  },
+  {
+    "route": "40",
+    "transport": "bus",
+    "carrier": "ООО «Сити-Бас»",
+    "phones": [
+      "+7 908 271 57 14"
+    ],
+    "emails": [
+      "virag27@mail.ru"
+    ],
+    "inn": "5948041350",
+    "routeName": "40, Станция Пермь-2 - м/р Нагорный - Автопарк"
+  },
+  {
+    "route": "41",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "41, ПНИПУ - Студенческий городок"
+  },
+  {
+    "route": "44",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "44, М/р Нижняя Мостовая - м/р Кислотные дачи - м/р Камский"
+  },
+  {
+    "route": "45",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "45, М/р Крохалева - ул. Мильчакова"
+  },
+  {
+    "route": "47",
+    "transport": "bus",
+    "carrier": "ООО «Сити-Бас»",
+    "phones": [
+      "+7 908 271 57 14"
+    ],
+    "emails": [
+      "virag27@mail.ru"
+    ],
+    "inn": "5948041350",
+    "routeName": "47, Гравийный завод - аэропорт Бахаревка"
+  },
+  {
+    "route": "48",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "48, Чусовской водозабор - м/р Январский"
+  },
+  {
+    "route": "49",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "49, М/р Заозерье - станция Пермь-2"
+  },
+  {
+    "route": "50",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "50, М/р Крохалева – м/р Парковый"
+  },
+  {
+    "route": "51",
+    "transport": "bus",
+    "carrier": "АО «Интранс ПК»",
+    "phones": [
+      "+7 (342) 215 28 10"
+    ],
+    "emails": [
+      "info@av-perm.ru"
+    ],
+    "inn": "5904409300",
+    "routeName": "51, М/р Владимирский - Сквер им.Решетникова"
+  },
+  {
+    "route": "52",
+    "transport": "bus",
+    "carrier": "ООО «Компас»",
+    "phones": [
+      "+7 922 642 62 00"
+    ],
+    "emails": [
+      "compas.perm@yandex.ru"
+    ],
+    "inn": "5904131704",
+    "routeName": "52, М/р Новый Январский - Комсомольская площадь"
+  },
+  {
+    "route": "53",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "53, Центральный рынок - 10-й микрорайон"
+  },
+  {
+    "route": "54",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 958 142 99 30"
+    ],
+    "emails": [
+      "ooodizel@internet.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "54, Ул. Мильчакова - станция Пермь2 - м/р Хмели"
+  },
+  {
+    "route": "55",
+    "transport": "bus",
+    "carrier": "ООО «АААвто»",
+    "phones": [
+      "+7 (342) 294 34 34",
+      "+7 901 265 34 34"
+    ],
+    "emails": [
+      "aaavto2014@mail.ru"
+    ],
+    "inn": "5948995243",
+    "routeName": "55, Планета – м/р Архиерейка"
+  },
+  {
+    "route": "56",
+    "transport": "bus",
+    "carrier": "ООО «ПермьАвтоЛайн»",
+    "phones": [
+      "+7 (342) 238 62 36"
+    ],
+    "emails": [
+      "permavtoline@list.ru"
+    ],
+    "inn": "5904119841",
+    "routeName": "56, Станция Пермь2 - м/р Крохалева"
+  },
+  {
+    "route": "57",
+    "transport": "bus",
+    "carrier": "ИП Миронов Д.В.",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "590301952678",
+    "routeName": "57, М/р Крохалева - НПО \"Биомед\""
+  },
+  {
+    "route": "58",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "58, М/р Васильевка - м/р Вышка-1"
+  },
+  {
+    "route": "59",
+    "transport": "bus",
+    "carrier": "ООО «Сити-Бас»",
+    "phones": [
+      "+7 908 271 57 14"
+    ],
+    "emails": [
+      "virag27@mail.ru"
+    ],
+    "inn": "5948041350",
+    "routeName": "59, М/р Юбилейный - м/р Нагорный - Инфекционная больница"
+  },
+  {
+    "route": "60",
+    "transport": "bus",
+    "carrier": "ООО «АААвто»",
+    "phones": [
+      "+7 (342) 294 34 34",
+      "+7 901 265 34 34"
+    ],
+    "emails": [
+      "aaavto2014@mail.ru"
+    ],
+    "inn": "5948995243",
+    "routeName": "60, ДДК им. Кирова - Комсомольская площадь"
+  },
+  {
+    "route": "61",
+    "transport": "bus",
+    "carrier": "ИП Иванов В.А.",
+    "phones": [
+      "+7 (342) 242 23 95"
+    ],
+    "emails": [
+      "ivanov.53@mail.ru"
+    ],
+    "inn": "590400162529",
+    "routeName": "61, Комсомольская площадь - м/р Новые Ляды"
+  },
+  {
+    "route": "62",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "62, Станция Осенцы - Планета - м/р Крохалева"
+  },
+  {
+    "route": "64",
+    "transport": "bus",
+    "carrier": "ООО «Компас»",
+    "phones": [
+      "+7 922 642 62 00"
+    ],
+    "emails": [
+      "compas.perm@yandex.ru"
+    ],
+    "inn": "5904131704",
+    "routeName": "64, ДДК им. Кирова - станция Пермь-2"
+  },
+  {
+    "route": "65",
+    "transport": "bus",
+    "carrier": "ИП Иванов В.А.",
+    "phones": [
+      "+7 (342) 242 23 95"
+    ],
+    "emails": [
+      "ivanov.53@mail.ru"
+    ],
+    "inn": "590400162529",
+    "routeName": "65, Кооператив \"Сосновый бор\" - Садовая - Березовая роща"
+  },
+  {
+    "route": "66",
+    "transport": "bus",
+    "carrier": "ООО \"Транзит\"",
+    "phones": [
+      "+7 (342) 203 05 88",
+      "+7 912 588 12 68"
+    ],
+    "emails": [
+      "transit-perm@mail.ru"
+    ],
+    "inn": "5916027112",
+    "routeName": "66, Ул. Авангардная - М/р Налимиха - ул. Светлогорская"
+  },
+  {
+    "route": "67",
+    "transport": "bus",
+    "carrier": "ООО «Ярославская транспортная компания-2»",
+    "phones": [
+      "+7 915 971 22 13"
+    ],
+    "emails": [
+      "perm@gtranscomp.ru"
+    ],
+    "inn": "7604169771",
+    "routeName": "67, М/р Парковый - м/р Садовый"
+  },
+  {
+    "route": "70",
+    "transport": "bus",
+    "carrier": "ИП Плотников В.А.",
+    "phones": [
+      "+7 (342) 261 21 20"
+    ],
+    "emails": [
+      "auto.bus@mail.ru"
+    ],
+    "inn": "590415436780",
+    "routeName": "70, Площадь Дружбы - улица Макаренко"
+  },
+  {
+    "route": "71",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "71, ул. Анвара Гатауллина - Сквер им.Решетникова"
+  },
+  {
+    "route": "72",
+    "transport": "bus",
+    "carrier": "ООО «Райзен»",
+    "phones": [
+      "+7 922 302 60 23"
+    ],
+    "emails": [
+      "raizenperm@mail.ru"
+    ],
+    "inn": "5904143562",
+    "routeName": "72, Планета - ЦУМ"
+  },
+  {
+    "route": "73",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "73, М/р Январский - м/р Заозерье"
+  },
+  {
+    "route": "74",
+    "transport": "bus",
+    "carrier": "АО «Интранс ПК»",
+    "phones": [
+      "+7 (342) 215 28 10"
+    ],
+    "emails": [
+      "info@av-perm.ru"
+    ],
+    "inn": "5904409300",
+    "routeName": "74, М/р Владимирский - м/р Заостровка"
+  },
+  {
+    "route": "75",
+    "transport": "bus",
+    "carrier": "ИП Миронов Д.В.",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "590301952678",
+    "routeName": "75, М/р Соболи - пл. Дружбы"
+  },
+  {
+    "route": "77",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "77, М/р Левшино  - ул. Мильчакова"
+  },
+  {
+    "route": "78",
+    "transport": "bus",
+    "carrier": "ООО «Дизель»",
+    "phones": [
+      "+7 919 467 39 14"
+    ],
+    "emails": [
+      "utk.dizel@mail.ru",
+      "pdd-59@mail.ru"
+    ],
+    "inn": "5907023866",
+    "routeName": "78, М/р Кислотные дачи - улица Мильчакова"
+  },
+  {
+    "route": "79",
+    "transport": "bus",
+    "carrier": "ООО \"Транзит\"",
+    "phones": [
+      "+7 (342) 203 05 88",
+      "+7 912 588 12 68"
+    ],
+    "emails": [
+      "transit-perm@mail.ru"
+    ],
+    "inn": "5916027112",
+    "routeName": "79, микрорайон Новый Крым - м/р Железнодорожный"
+  },
+  {
+    "route": "80",
+    "transport": "bus",
+    "carrier": "ООО «АААвто»",
+    "phones": [
+      "+7 (342) 294 34 34",
+      "+7 901 265 34 34"
+    ],
+    "emails": [
+      "aaavto2014@mail.ru"
+    ],
+    "inn": "5948995243",
+    "routeName": "80, ДДК им. Кирова - Ипподром"
+  },
+  {
+    "route": "81",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "81, Улица Сапфирная - станция Пермь-2"
+  },
+  {
+    "route": "82",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "82, ул. Гашкова - м/р Вышка-1 - ул. Грачева - ул. Гашкова (кольцевой)"
+  },
+  {
+    "route": "83",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "83, улица Ушинского - площадь Восстания"
+  },
+  {
+    "route": "85",
+    "transport": "bus",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "85, Станция Пермь-1 — Сквер им. Решетникова"
+  },
+  {
+    "route": "86",
+    "transport": "bus",
+    "carrier": "ИП Целоусов А.А.",
+    "phones": [
+      "+7 963 019 53 84",
+      "+7 906 888 46 47"
+    ],
+    "emails": [
+      "at208@mail.ru"
+    ],
+    "inn": "590304600032",
+    "routeName": "86, м/р Ива - ул. Мотовилихинская"
+  },
+  {
+    "route": "2",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "2, Станция Осенцы - Стахановское кольцо"
+  },
+  {
+    "route": "3",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "3, ОАО \"Велта\" - ОАО \"Красный октябрь\""
+  },
+  {
+    "route": "4",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "4, Ст. Пермь-2 - м/р Висим"
+  },
+  {
+    "route": "56",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "56, Станция Пермь2 - м/р Крохалева"
+  },
+  {
+    "route": "7",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "7, Ст. Пермь-2 - ОАО \"Вагоноремонтный завод\""
+  },
+  {
+    "route": "8",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "8, АО \"Инкар\" - м/р Висим"
+  },
+  {
+    "route": "11",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "11, Станция Пермь-II - м/р Висим"
+  },
+  {
+    "route": "12",
+    "transport": "tram",
+    "carrier": "МУП «Пермгорэлектротранс»",
+    "phones": [
+      "+7 (342) 212 30 42"
+    ],
+    "emails": [
+      "muppget@permonline.ru"
+    ],
+    "inn": "5906006610",
+    "routeName": "12, Школа 107 - Пермская Ярмарка"
+  },
+  {
+    "route": "7Т",
+    "transport": "bus",
+    "carrier": "ООО \"Транзит\"",
+    "phones": [
+      "+7 (342) 203 05 88",
+      "+7 912 588 12 68"
+    ],
+    "emails": [
+      "transit-perm@mail.ru"
+    ],
+    "inn": "5916027112",
+    "routeName": null
+  },
+  {
+    "route": "300Т",
+    "transport": "bus",
+    "carrier": "ООО «Автобик»",
+    "phones": [
+      "+7 (342) 278 05 80"
+    ],
+    "emails": [
+      "logosat@mail.ru"
+    ],
+    "inn": "5903151680",
+    "routeName": null
+  }
+]
