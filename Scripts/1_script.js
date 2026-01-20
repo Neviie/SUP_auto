@@ -53,6 +53,8 @@ function applyTheme(theme) {
     window.currentTheme = theme;
     
     console.log("THEME APPLIED:", theme, isDark ? "DARK" : "LIGHT");
+    
+    
 }
 
 function updateThemeImages(isDark) {
@@ -271,6 +273,7 @@ function loadRoutes(transport, route) {
 }
 
 window.onload = function() {
+  
     // Инициализация элементов
     container = document.querySelector('.container');
     fon = document.querySelector('.fon');
@@ -307,3 +310,4 @@ window.onload = function() {
     // Проверяем userId и загружаем данные
     checkUserIdAndLoadData();
 };
+

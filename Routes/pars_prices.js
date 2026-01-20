@@ -115,6 +115,7 @@ function expandRoutes(row, allRoutes) {
     );
 
     console.log("✅ routes.json создан (автобусы + трамваи)");
+    process.exit(0);
   } catch (e) {
     console.error("❌ Ошибка:", e.message);
   }

@@ -1,5 +1,5 @@
 // Объекты с путями к картинкам для разных тем
-const imagePaths = {
+let imagePaths = {
     theme0: { // светлая тема
         bilet: {
             active: '/Assets/bilet_acrive.png',
@@ -65,7 +65,7 @@ const imagePaths = {
         proezdnoy: {
             active: '/Assets/proezdnoy_active_N.png',
             inactive: '/Assets/proezdnoy_noactive_N.png',
-            noactive: '/Assets/proezdnoy_noactive_N.png'
+            noactive: '/Assets/proezdnoy_noactive.png'
         },
         schedule: {
             active: '/Assets/schedule_active_N.png',
@@ -115,7 +115,7 @@ const imagePaths = {
 };
 
 // Цвета для разных тем
-const themeColors = {
+let themeColors = {
     theme0: { // светлая тема
         active: 'rgb(17,121,145)',
         inactive: 'rgb(110, 110, 110)',
@@ -138,19 +138,99 @@ const themeColors = {
     }
 };
 
-// Получаем текущую тему (должна быть определена в 1_script.js)
-const currentTheme = window.currentTheme || '1';
-const themeKey = `theme${currentTheme}`;
-const themeImages = imagePaths[themeKey];
-const colors = themeColors[themeKey];
+// Глобальные переменные темы (будут инициализированы с задержкой)
+let currentTheme, themeImages, colors;
 
-// Функция для получения изображения в зависимости от темы и состояния
+// Функция для получения изображения с динамическим определением темы
 function getImage(type, state = 'inactive') {
+    // Всегда получаем актуальную тему
+    const theme = getCurrentTheme();
+    const images = imagePaths[`theme${theme}`];
+    
     if (type === 'bilet' || type === 'proezdnoy' || type === 'schedule' || type === 'cabinet') {
-        return themeImages[type][state];
+        return images[type][state];
     }
-    return themeImages[type];
+    return images[type];
 }
+
+// Функция для получения цветов с динамическим определением темы
+function getThemeColors() {
+    const theme = getCurrentTheme();
+    return themeColors[`theme${theme}`];
+}
+
+// Функция для получения текущей темы
+function getCurrentTheme() {
+    // Сначала проверяем window.currentTheme, потом localStorage, потом по умолчанию '1'
+    return window.currentTheme || localStorage.getItem('appTheme') || '1';
+}
+
+// Функция инициализации темы с задержкой
+function initTheme() {
+    console.log("Script 3: Starting theme initialization...");
+    
+    setTimeout(() => {
+        currentTheme = getCurrentTheme();
+        console.log("Script 3: Theme after delay:", currentTheme);
+        console.log("Script 3: window.currentTheme:", window.currentTheme);
+        console.log("Script 3: localStorage appTheme:", localStorage.getItem('appTheme'));
+        
+        const themeKey = `theme${currentTheme}`;
+        themeImages = imagePaths[themeKey];
+        colors = themeColors[themeKey];
+        
+        console.log("Script 3: Theme initialized:", themeKey);
+        
+        // Инициализируем изображения
+        initThemeImages();
+    }, 1000); // Задержка 1 секунда
+}
+
+// Функция инициализации изображений
+function initThemeImages() {
+    if (!themeImages) {
+        console.log("Script 3: themeImages not initialized yet");
+        return;
+    }
+    
+    console.log("Script 3: Initializing theme images...");
+    
+    // Устанавливаем изображения для левого меню
+    var left_menu_exit = document.getElementById('left_menu_exit');
+    if (left_menu_exit) {
+        left_menu_exit.src = themeImages.leftMenu.exit;
+        console.log("Script 3: Set left_menu_exit to", themeImages.leftMenu.exit);
+    }
+
+    var copy_img = document.querySelector('.copy_img');
+    if (copy_img) {
+        copy_img.src = themeImages.leftMenu.copy;
+        console.log("Script 3: Set copy_img to", themeImages.leftMenu.copy);
+    }
+
+    // Устанавливаем изображения в расписании
+    var schedule_img_5 = document.querySelector('.schedule_star[data-dark]');
+    if (schedule_img_5) {
+        schedule_img_5.src = themeImages.other.schedule_5;
+        console.log("Script 3: Set schedule_img_5 to", themeImages.other.schedule_5);
+    }
+
+    var schedule_img_6 = document.querySelector('.img_schedule_menu[data-dark]');
+    if (schedule_img_6) {
+        schedule_img_6.src = themeImages.other.schedule_6;
+        console.log("Script 3: Set schedule_img_6 to", themeImages.other.schedule_6);
+    }
+
+    var proezdnoy_img_3 = document.querySelector('.schedule_star[data-dark][data-light]');
+    if (proezdnoy_img_3) {
+        proezdnoy_img_3.src = themeImages.other.proezdnoy_3;
+        console.log("Script 3: Set proezdnoy_img_3 to", themeImages.other.proezdnoy_3);
+    }
+    
+    console.log("Script 3: Theme images initialized");
+}
+
+// ===================== ОСНОВНЫЕ ФУНКЦИИ =====================
 
 // Кабинет
 function handleClick() {
@@ -169,7 +249,7 @@ function handleClick() {
     imgElement.src = getImage('cabinet', 'active');
 
     var fontElement = document.querySelector('.font_fig_3');
-    fontElement.style.color = colors.active;
+    fontElement.style.color = getThemeColors().active;
 
     var zoElement = document.querySelector('.shap_cen');
     zoElement.style.marginLeft = '12vw';
@@ -181,16 +261,16 @@ function handleClick() {
     backbusimgElement.src = getImage('schedule', 'inactive');
 
     var backbusfontElement = document.querySelector('.font_fig_4');
-    backbusfontElement.style.color = colors.inactive;
+    backbusfontElement.style.color = getThemeColors().inactive;
 
     var backproezdnoyimgElement = document.querySelector('.img_fig_2');
     backproezdnoyimgElement.src = getImage('proezdnoy', 'inactive');
 
     var backproezdnoyfontElement = document.querySelector('.font_fig_2');
-    backproezdnoyfontElement.style.color = colors.inactive;
+    backproezdnoyfontElement.style.color = getThemeColors().inactive;
 
     var backticketfontElement = document.querySelector('.font_fig_1');
-    backticketfontElement.style.color = colors.inactive;
+    backticketfontElement.style.color = getThemeColors().inactive;
 
     var backticketimgElement = document.querySelector('.img_fig_1');
     backticketimgElement.src = getImage('bilet', 'inactive');
@@ -213,10 +293,10 @@ function handleClick2() {
     backprofileimgElement.src = getImage('cabinet', 'inactive');
 
     var fontElement = document.querySelector('.font_fig_4');
-    fontElement.style.color = colors.active;
+    fontElement.style.color = getThemeColors().active;
 
     var backprofilefontElement = document.querySelector('.font_fig_3');
-    backprofilefontElement.style.color = colors.inactive;
+    backprofilefontElement.style.color = getThemeColors().inactive;
 
     var zoElement = document.querySelector('.shap_cen');
     zoElement.style.marginLeft = '15vw';
@@ -228,10 +308,10 @@ function handleClick2() {
     backproezdnoyimgElement.src = getImage('proezdnoy', 'inactive');
 
     var backproezdnoyfontElement = document.querySelector('.font_fig_2');
-    backproezdnoyfontElement.style.color = colors.inactive;
+    backproezdnoyfontElement.style.color = getThemeColors().inactive;
 
     var backticketfontElement = document.querySelector('.font_fig_1');
-    backticketfontElement.style.color = colors.inactive;
+    backticketfontElement.style.color = getThemeColors().inactive;
 
     var backticketimgElement = document.querySelector('.img_fig_1');
     backticketimgElement.src = getImage('bilet', 'inactive');
@@ -254,10 +334,10 @@ function handleClick3() {
     backprofileimgElement.src = getImage('cabinet', 'inactive');
 
     var fontElement = document.querySelector('.font_fig_2');
-    fontElement.style.color = colors.active;
+    fontElement.style.color = getThemeColors().active;
 
     var backprofilefontElement = document.querySelector('.font_fig_3');
-    backprofilefontElement.style.color = colors.inactive;
+    backprofilefontElement.style.color = getThemeColors().inactive;
 
     var zoElement = document.querySelector('.shap_cen');
     zoElement.style.marginLeft = '20vw';
@@ -269,10 +349,10 @@ function handleClick3() {
     backbusimgElement.src = getImage('schedule', 'inactive');
 
     var backbusfontElement = document.querySelector('.font_fig_4');
-    backbusfontElement.style.color = colors.inactive;
+    backbusfontElement.style.color = getThemeColors().inactive;
 
     var backticketfontElement = document.querySelector('.font_fig_1');
-    backticketfontElement.style.color = colors.inactive;
+    backticketfontElement.style.color = getThemeColors().inactive;
 
     var backticketimgElement = document.querySelector('.img_fig_1');
     backticketimgElement.src = getImage('bilet', 'inactive');
@@ -307,13 +387,13 @@ function handleClick4() {
     imgElement1.src = getImage('bilet', 'active');
 
     var fontElement = document.querySelector('.font_fig_1');
-    fontElement.style.color = colors.active;
+    fontElement.style.color = getThemeColors().active;
 
     var backprofileimgElement = document.querySelector('.img_fig_3');
     backprofileimgElement.src = getImage('cabinet', 'inactive');
 
     var backprofilefontElement = document.querySelector('.font_fig_3');
-    backprofilefontElement.style.color = colors.inactive;
+    backprofilefontElement.style.color = getThemeColors().inactive;
 
     var zoElement = document.querySelector('.shap_cen');
     zoElement.style.marginLeft = 'calc(12vw + 10vh)';
@@ -325,13 +405,13 @@ function handleClick4() {
     backbusimgElement.src = getImage('schedule', 'inactive');
 
     var backbusfontElement = document.querySelector('.font_fig_4');
-    backbusfontElement.style.color = colors.inactive;
+    backbusfontElement.style.color = getThemeColors().inactive;
 
     var backproezdnoyimgElement = document.querySelector('.img_fig_2');
     backproezdnoyimgElement.src = getImage('proezdnoy', 'inactive');
 
     var backproezdnoyfontElement = document.querySelector('.font_fig_2');
-    backproezdnoyfontElement.style.color = colors.inactive;
+    backproezdnoyfontElement.style.color = getThemeColors().inactive;
 }
 
 function showNewControl() {
@@ -387,6 +467,10 @@ var bottom_button = document.querySelectorAll('.fig_2, .fig_3, .fig_4');
 
 // Функция деактивации всех кнопок
 function noactive() {
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
     var all_leftmenu_buttons = document.querySelectorAll('.left_menu_point');
     var scanQR_img = document.getElementById('scan_QR_img');
     var numQR_img = document.getElementById('num_QR_img');
@@ -396,9 +480,9 @@ function noactive() {
     var TS_map_img = document.getElementById('TS_map_img');
 
     all_leftmenu_buttons.forEach((button) => {
-        button.style.color = colors.leftMenu.text;
+        button.style.color = themeColors.leftMenu.text;
         button.style.fontWeight = 'normal';
-        button.style.backgroundColor = colors.leftMenu.bg;
+        button.style.backgroundColor = themeColors.leftMenu.bg;
     });
 
     scanQR_img.src = themeImages.leftMenu.scanQR.inactive;
@@ -470,9 +554,13 @@ arrow_img.addEventListener('click', () => {
 
     var menunow_left = document.getElementById('menunow_left');
     var now_img = document.getElementById('Active_menunow');
-    menunow_left.style.color = colors.leftMenu.activeText;
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    menunow_left.style.color = themeColors.leftMenu.activeText;
     menunow_left.style.fontWeight = '600';
-    menunow_left.style.backgroundColor = colors.leftMenu.activeBg;
+    menunow_left.style.backgroundColor = themeColors.leftMenu.activeBg;
     now_img.src = themeImages.leftMenu.now.active;
     handleClick4();
 });
@@ -482,9 +570,13 @@ scan_QR.addEventListener('click', () => {
     noactive();
     hideall();
 
-    scan_QR.style.color = colors.leftMenu.activeText;
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    scan_QR.style.color = themeColors.leftMenu.activeText;
     scan_QR.style.fontWeight = '600';
-    scan_QR.style.backgroundColor = colors.leftMenu.activeBg;
+    scan_QR.style.backgroundColor = themeColors.leftMenu.activeBg;
     scan_QR_img.src = themeImages.leftMenu.scanQR.active;
 
     leftMenu.style.left = '-100%';
@@ -516,9 +608,14 @@ num_QR.addEventListener('click', () => {
     noactive();
     hideall();
     oppElement.textContent = 'Оплата проезда';
-    num_QR.style.color = colors.leftMenu.activeText;
+    
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    num_QR.style.color = themeColors.leftMenu.activeText;
     num_QR.style.fontWeight = '600';
-    num_QR.style.backgroundColor = colors.leftMenu.activeBg;
+    num_QR.style.backgroundColor = themeColors.leftMenu.activeBg;
     var num_QR_img = document.getElementById('num_QR_img');
     num_QR_img.src = themeImages.leftMenu.numQR.active;
 
@@ -537,9 +634,14 @@ TS_map.addEventListener('click', () => {
     noactive();
     hideall();
     oppElement.textContent = 'Оплата проезда';
-    TS_map.style.color = colors.leftMenu.activeText;
+    
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    TS_map.style.color = themeColors.leftMenu.activeText;
     TS_map.style.fontWeight = '600';
-    TS_map.style.backgroundColor = colors.leftMenu.activeBg;
+    TS_map.style.backgroundColor = themeColors.leftMenu.activeBg;
     var TS_map_img = document.getElementById('TS_map_img');
     TS_map_img.src = themeImages.leftMenu.TS_map.active;
 
@@ -565,9 +667,13 @@ function menunowleft() {
     noactive();
     hideall();
 
-    menunow_left.style.color = colors.leftMenu.activeText;
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    menunow_left.style.color = themeColors.leftMenu.activeText;
     menunow_left.style.fontWeight = '600';
-    menunow_left.style.backgroundColor = colors.leftMenu.activeBg;
+    menunow_left.style.backgroundColor = themeColors.leftMenu.activeBg;
     now_img.src = themeImages.leftMenu.now.active;
     handleClick4();
 }
@@ -587,16 +693,20 @@ menucard.addEventListener('click', () => {
     noactive();
     hideall();
 
-    menucard.style.color = colors.leftMenu.activeText;
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    menucard.style.color = themeColors.leftMenu.activeText;
     menucard.style.fontWeight = '600';
-    menucard.style.backgroundColor = colors.leftMenu.activeBg;
+    menucard.style.backgroundColor = themeColors.leftMenu.activeBg;
     var menu_card_img = document.getElementById('menu_card_img');
     menu_card_img.src = themeImages.leftMenu.card.active;
 
     leftMenu.style.left = '-100%';
     shadow.classList.toggle('transparent');
     zooElement.textContent = 'Цифровая карта';
-    oppElement.textContent = window.randomNumber16; // используем глобальную переменную
+    oppElement.textContent = window.randomNumber16;
     card_box.style.display = 'block';
     shap_cenElement.style.marginLeft = 'calc(15vw + 12vh)';
     right_up_img.style.display = 'block';
@@ -614,9 +724,13 @@ historyleft.addEventListener('click', () => {
     noactive();
     hideall();
 
-    historyleft.style.color = colors.leftMenu.activeText;
+    const themeColors = getThemeColors();
+    const theme = getCurrentTheme();
+    const themeImages = imagePaths[`theme${theme}`];
+    
+    historyleft.style.color = themeColors.leftMenu.activeText;
     historyleft.style.fontWeight = '600';
-    historyleft.style.backgroundColor = colors.leftMenu.activeBg;
+    historyleft.style.backgroundColor = themeColors.leftMenu.activeBg;
     history_img.src = themeImages.leftMenu.history.active;
 
     leftMenu.style.left = '-100%';
@@ -728,25 +842,17 @@ blue_box.addEventListener('click', () => {
     }
 });
 
-// Инициализация изображений при загрузке
+// ===================== ЗАПУСК ИНИЦИАЛИЗАЦИИ =====================
+
+// Запускаем инициализацию при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Устанавливаем изображения для левого меню
-    var left_menu_exit = document.getElementById('left_menu_exit');
-    if (left_menu_exit) left_menu_exit.src = themeImages.leftMenu.exit;
-
-    var copy_img = document.querySelector('.copy_img');
-    if (copy_img) copy_img.src = themeImages.leftMenu.copy;
-
-    // Устанавливаем изображения в расписании
-    var schedule_img_5 = document.querySelector('.schedule_star[data-dark]');
-    if (schedule_img_5) schedule_img_5.src = themeImages.other.schedule_5;
-
-    var schedule_img_6 = document.querySelector('.img_schedule_menu[data-dark]');
-    if (schedule_img_6) schedule_img_6.src = themeImages.other.schedule_6;
-
-    var proezdnoy_img_3 = document.querySelector('.schedule_star[data-dark][data-light]');
-    if (proezdnoy_img_3) proezdnoy_img_3.src = themeImages.other.proezdnoy_3;
-
-    
+    console.log("Script 3: DOM loaded, starting initialization...");
+    initTheme();
 });
 
+// Также можно вызвать инициализацию сразу (на случай если DOM уже загружен)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+} else {
+    initTheme();
+}
