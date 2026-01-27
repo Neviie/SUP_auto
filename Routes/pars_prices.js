@@ -55,10 +55,10 @@ async function parseRoutes(url) {
   return routes;
 }
 
-function expandRoutes(row, allRoutes) {
+function expandRoutes(row, busRoutes, tramRoutes) {
   const results = [];
 
-  // ТРАМВАИ
+  // 🚋 ТРАМВАИ
   if (row.rawRoute.startsWith("ТМ")) {
     const numbers = row.rawRoute
       .replace("ТМ", "")
@@ -73,14 +73,14 @@ function expandRoutes(row, allRoutes) {
         phones: row.phones,
         emails: row.emails,
         inn: row.inn,
-        routeName: allRoutes[num] || null
+        routeName: tramRoutes[num] || null
       });
     });
 
     return results;
   }
 
-  // АВТОБУСЫ (1, 1А, 300Т и т.п.)
+  // 🚌 АВТОБУСЫ
   results.push({
     route: row.rawRoute,
     transport: "bus",
@@ -88,7 +88,7 @@ function expandRoutes(row, allRoutes) {
     phones: row.phones,
     emails: row.emails,
     inn: row.inn,
-    routeName: allRoutes[row.rawRoute] || null
+    routeName: busRoutes[row.rawRoute] || null
   });
 
   return results;
@@ -100,12 +100,11 @@ function expandRoutes(row, allRoutes) {
 
     const busRoutes = await parseRoutes(BUS_ROUTES_URL);
     const tramRoutes = await parseRoutes(TRAM_ROUTES_URL);
-    const allRoutes = { ...busRoutes, ...tramRoutes };
 
     const result = [];
 
     carriers.forEach(row => {
-      result.push(...expandRoutes(row, allRoutes));
+      result.push(...expandRoutes(row, busRoutes, tramRoutes));
     });
 
     fs.writeFileSync(
@@ -114,7 +113,7 @@ function expandRoutes(row, allRoutes) {
       "utf8"
     );
 
-    console.log("✅ routes.json создан (автобусы + трамваи)");
+    console.log("✅ routes.json создан (без путаницы автобус/трамвай)");
     process.exit(0);
   } catch (e) {
     console.error("❌ Ошибка:", e.message);

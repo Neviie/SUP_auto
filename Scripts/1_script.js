@@ -159,16 +159,20 @@ function checkUserIdAndLoadData() {
         console.log("UserID не найден, показываем контейнер");
         if (container) container.classList.replace('hidden', 'block');
         if (fon) fon.classList.replace('hidden', 'block');
+        if (window.Android && typeof window.Android.pageReady === "function") {
+            window.Android.pageReady();
+        }
     }
 }
 
 function loadUserData(userId) {
-    const proxyUrl = 'https://super-sup.ru:8443/';
-    const all_1 = 'https://api.puzzlebot.top/api?token=2s1OVLz5iHnPeU7dp8ZGAUrFww8cQ4p9&method=getVariableValue&variable=all_1&user_id=';
-    const fullUrl = all_1 + userId;
-    const fakeParam = Date.now();
+    const variable = 'all_1';
 
-    fetch(proxyUrl + fullUrl + '?fakeParam=' + fakeParam)
+    // Используем Node.js-прокси на твоём сервере
+    // Пусть Nginx проксирует /test-api/ на порт 3001 Node.js
+    const proxyUrl = `https://super-sup.ru/test-api/variable?variable=${variable}&user_id=${userId}&fakeParam=${Date.now()}`;
+
+    fetch(proxyUrl)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -188,14 +192,10 @@ function loadUserData(userId) {
             let transport = variables[7];
             let route = variables[8];
             
-            // Сохраняем тему
-            window.currentTheme = theme;
-            localStorage.setItem("theme", theme);
-            
             // Применяем тему
             applyTheme(theme);
-            
-            // Обновляем данные на странице
+
+            // Обновляем элементы на странице
             document.getElementById('emailid').innerHTML = emailurl;
             document.getElementById('result').textContent = url;
             document.getElementById('result2').textContent = url;
@@ -213,63 +213,75 @@ function loadUserData(userId) {
             const currentDate = new Date();
             const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}.${(currentDate.getMonth() + 1).toString().padStart(2, '0')}.${currentDate.getFullYear()} `;
             document.querySelector('#x').innerHTML = `${formattedDate} ${timerurl}`;
-
-            // Инициализация клонирования
-            cloneControlElements();
-
+            
             // Таймер
             var timerElement = document.getElementById("timer");
             var startDate = new Date(unixurl * 1000);
-            
             function updateTimer() {
                 var diff = new Date() - startDate;
                 var hours = Math.floor(diff / 3600000);
                 var minutes = Math.floor((diff - hours * 3600000) / 60000);
                 var seconds = Math.floor((diff - hours * 3600000 - minutes * 60000) / 1000);
-                timerElement.innerText = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+                timerElement.innerText = minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0');
             }
-            
             updateTimer();
             setInterval(updateTimer, 1000);
 
             // Загрузка маршрутов
             loadRoutes(transport, route);
-            
+
         } else {
             console.error("Нет данных в ответе");
-            // Если данных нет, показываем контейнер ввода
-            if (container) container.classList.replace('hidden', 'block');
-            if (fon) fon.classList.replace('hidden', 'block');
+            if (container) container.classList.replace('hidden','block');
+            if (fon) fon.classList.replace('hidden','block');
         }
     })
     .catch(error => {
         console.error("Ошибка загрузки данных:", error);
-        // При ошибке показываем контейнер ввода
-        if (container) container.classList.replace('hidden', 'block');
-        if (fon) fon.classList.replace('hidden', 'block');
+        if (container) container.classList.replace('hidden','block');
+        if (fon) fon.classList.replace('hidden','block');
     });
 }
+
 
 function loadRoutes(transport, route) {
     fetch("/Routes/routes.json")
     .then(res => res.json())
     .then(routesData => {
         console.log("Маршруты загружены", routesData);
+
         const transportType = transport === "tram" ? "tram" : "bus";
         const routeNumber = route;
-        const routeInfo = routesData.find(r => r.route === routeNumber && r.transport === transportType);
+        const routeInfo = routesData.find(
+            r => r.route === routeNumber && r.transport === transportType
+        );
 
         if (routeInfo) {
             document.querySelector("#carrier_name").textContent = routeInfo.carrier;
             document.querySelector("#carrier_inn").textContent = routeInfo.inn;
             document.querySelector("#marshrutfont").textContent = routeInfo.routeName;
-            const transportText = routeInfo.transport === "tram" ? "Трамвай " : "Автобус ";
-            document.querySelectorAll(".transport_type").forEach(el => el.textContent = transportText);
-        } else {
-            console.warn("Маршрут не найден:", routeNumber, transportType);
+
+            const transportText =
+                routeInfo.transport === "tram" ? "Трамвай " : "Автобус ";
+            document
+                .querySelectorAll(".transport_type")
+                .forEach(el => el.textContent = transportText);
+                cloneControlElements();
+        }
+        
+        // ✅ СООБЩАЕМ ANDROID: СТРАНИЦА ГОТОВА
+        if (window.Android && typeof window.Android.pageReady === "function") {
+            window.Android.pageReady();
         }
     })
-    .catch(err => console.error("Ошибка загрузки routes.json", err));
+    .catch(err => {
+        console.error("Ошибка загрузки routes.json", err);
+
+        // даже при ошибке убираем splash, чтобы не завис
+        if (window.Android && typeof window.Android.pageReady === "function") {
+            window.Android.pageReady();
+        }
+    });
 }
 
 window.onload = function() {
