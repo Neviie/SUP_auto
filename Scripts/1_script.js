@@ -18,8 +18,32 @@ var userId;
 // Добавляем в начало
 window.randomNumber16 = '9' + Math.floor(Math.random() * 9 + 1) + Math.floor(Math.random() * 10 ** 17);
 
+(function applyInitialTheme() {
+    const savedTheme = localStorage.getItem('appTheme') || '0';
+    const isDark = savedTheme === '1';
+    
+    // Создаем или находим стиль
+    let themeStyle = document.getElementById('theme-style');
+    if (!themeStyle) {
+        themeStyle = document.createElement('link');
+        themeStyle.id = 'theme-style';
+        themeStyle.rel = 'stylesheet';
+        themeStyle.type = 'text/css';
+        document.head.appendChild(themeStyle);
+    }
+    
+    // Устанавливаем тему 
+    themeStyle.href = isDark ? "/StyleWEBN.css" : "/StyleWEBL.css";
+    
+    // Сохраняем текущую тему
+    window.currentTheme = savedTheme;
+    window.pendingThemeUpdate = isDark; // Сохраняем для обновления картинок позже
+    
+    console.log("INITIAL THEME APPLIED:", savedTheme, isDark ? "DARK" : "LIGHT");
+})();
+
 function getRandomNumber() {
-    var numbers = [0, 40, 80];
+    var numbers = [0, 43, 86];
     return numbers[Math.floor(Math.random() * numbers.length)];
 }
 
@@ -31,38 +55,67 @@ function update1Number() {
     numberElement2.textContent = numberElement3;
 }
 
-function applyTheme(theme) {
-    const isDark = theme === "1";
+// Функция показа контейнера
+function showContainer() {
+    if (container) container.classList.replace('hidden', 'block');
+    if (fon) fon.classList.replace('hidden', 'block');
+}
+
+// Функция скрытия контейнера
+function hideContainer() {
+    if (container) container.classList.replace('block', 'hidden');
+    if (fon) fon.classList.replace('block', 'hidden');
+}
+
+// Функция сохранения данных
+function saveData() {
+    var value = document.getElementById("inputValue").value.trim();
     
-    if (window.__initialTheme === theme) {
-        updateThemeImages(isDark);
-        updateThemeMenu(isDark);
-        console.log("THEME ALREADY APPLIED:", theme, isDark ? "DARK" : "LIGHT");
+    if (!value) {
+        alert("Введите user_id");
         return;
     }
     
-    const themeStyle = document.getElementById('theme-style');
-    if (themeStyle) {
-        themeStyle.href = isDark ? "/StyleWEBN.css" : "/StyleWEBL.css";
+    localStorage.setItem("myValue", value);
+    
+    // Скрываем контейнер
+    hideContainer();
+    
+    // Загружаем данные без перезагрузки страницы
+    loadUserData(value);
+}
+
+// Функция обновления картинок темы
+function updateThemeImages(isDark) {
+    const imgs = document.querySelectorAll("img[data-dark][data-light]");
+    
+    if (imgs.length === 0) {
+        console.log("Картинки с data-dark/data-light не найдены");
+        return false;
     }
     
-    updateThemeImages(isDark);
-    updateThemeMenu(isDark);
+    console.log(`Найдено ${imgs.length} картинок для обновления темы`);
     
-    localStorage.setItem('appTheme', theme);
-    window.currentTheme = theme;
+    for (let i = 0; i < imgs.length; i++) {
+        const img = imgs[i];
+        try {
+            const newSrc = isDark ? img.dataset.dark : img.dataset.light;
+            const currentSrc = img.src.split('/').pop(); // Только имя файла
+            
+            // Обновляем только если нужно
+            if (!img.src.includes(newSrc)) {
+                img.src = newSrc;
+                console.log(`Обновлена картинка: ${newSrc}`);
+            }
+        } catch(e) {
+            console.error("Ошибка у картинки:", img, e);
+        }
+    }
     
-    console.log("THEME APPLIED:", theme, isDark ? "DARK" : "LIGHT");
-    
-    
+    return true;
 }
 
-function updateThemeImages(isDark) {
-    document.querySelectorAll("img[data-dark][data-light]").forEach(img => {
-        img.src = isDark ? img.dataset.dark : img.dataset.light;
-    });
-}
-
+// Функция обновления меню
 function updateThemeMenu(isDark) {
     setTimeout(() => {
         const activeMenu = document.getElementById('menunow_left');
@@ -80,6 +133,26 @@ function updateThemeMenu(isDark) {
             }
         }
     }, 50);
+}
+
+function applyTheme(theme) {
+    const isDark = theme === "1";
+    
+    // Меняем CSS только если тема изменилась
+    if (window.currentTheme !== theme) {
+        const themeStyle = document.getElementById('theme-style');
+        if (themeStyle) {
+            themeStyle.href = isDark ? "/StyleWEBN.css" : "/StyleWEBL.css";
+        }
+        
+        localStorage.setItem('appTheme', theme);
+        window.currentTheme = theme;
+        console.log("THEME CHANGED:", theme, isDark ? "DARK" : "LIGHT");
+    }
+    
+    // ВСЕГДА обновляем картинки и меню
+    updateThemeImages(isDark);
+    updateThemeMenu(isDark);
 }
 
 function cloneControlElements() {
@@ -103,7 +176,7 @@ function cloneControlElements() {
 
     var oplataElement = document.getElementById("oplata");
     var bagsValue = parseInt(document.getElementById("bags").innerText);
-    var result = (passenValue + bagsValue) * 40;
+    var result = (passenValue + bagsValue) * 43;
     var greenspan = document.getElementById("greenpass");
     oplataElement.textContent = result;
     greenspan.textContent = result;
@@ -113,33 +186,15 @@ function update2Number() {
     var numberElement = document.getElementById('number');
     var numberElement2 = document.getElementById('number2');
     var currentNumber = parseInt(numberElement.textContent);
-    var numbers = [0, 40, 80];
+    var numbers = [0, 43, 86];
     var nextNumberIndex = numbers.indexOf(currentNumber) + 1;
     if (nextNumberIndex >= numbers.length) nextNumberIndex = 0;
     numberElement.textContent = numbers[nextNumberIndex];
     numberElement2.textContent = numbers[nextNumberIndex];
 }
 
-function saveData() {
-    var value = document.getElementById("inputValue").value;
-    localStorage.setItem("myValue", value);
-    location.reload(); // Перезагружаем страницу после сохранения
-}
-
-function hideContainer() {
-    if (container) container.classList.replace('block', 'hidden');
-    if (fon) fon.classList.replace('block', 'hidden');
-}
-
 function checkUserIdAndLoadData() {
-    let tg = window.Telegram.WebApp;
     let userId = null;
-
-    try {
-        userId = tg.initDataUnsafe.user.id;
-    } catch (error) {
-        console.error("Telegram WebApp не доступен:", error);
-    }
 
     if (!userId) {
         userId = localStorage.getItem("myValue");
@@ -149,26 +204,27 @@ function checkUserIdAndLoadData() {
         console.log("UserID найден:", userId);
         
         // Скрываем контейнер ввода
-        if (container) container.classList.replace('block', 'hidden');
-        if (fon) fon.classList.replace('block', 'hidden');
+        hideContainer();
         
         // Загружаем данные пользователя
         loadUserData(userId);
     } else {
         // Если userId нет, показываем контейнер ввода
         console.log("UserID не найден, показываем контейнер");
-        if (container) container.classList.replace('hidden', 'block');
-        if (fon) fon.classList.replace('hidden', 'block');
+        showContainer();
+        if (window.Android && typeof window.Android.pageReady === "function") {
+            window.Android.pageReady();
+        }
     }
 }
 
 function loadUserData(userId) {
-    const proxyUrl = 'https://super-sup.ru:8443/';
-    const all_1 = 'https://api.puzzlebot.top/api?token=2s1OVLz5iHnPeU7dp8ZGAUrFww8cQ4p9&method=getVariableValue&variable=all_1&user_id=';
-    const fullUrl = all_1 + userId;
-    const fakeParam = Date.now();
+    const variable = 'all_1';
 
-    fetch(proxyUrl + fullUrl + '?fakeParam=' + fakeParam)
+    // Используем Node.js-прокси
+    const proxyUrl = `https://super-sup.ru/test-api/variable?variable=${variable}&user_id=${userId}&fakeParam=${Date.now()}`;
+
+    fetch(proxyUrl)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -188,14 +244,10 @@ function loadUserData(userId) {
             let transport = variables[7];
             let route = variables[8];
             
-            // Сохраняем тему
-            window.currentTheme = theme;
-            localStorage.setItem("theme", theme);
-            
-            // Применяем тему
+            // Применяем тему (если она отличается)
             applyTheme(theme);
-            
-            // Обновляем данные на странице
+
+            // Обновляем элементы на странице
             document.getElementById('emailid').innerHTML = emailurl;
             document.getElementById('result').textContent = url;
             document.getElementById('result2').textContent = url;
@@ -213,40 +265,31 @@ function loadUserData(userId) {
             const currentDate = new Date();
             const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}.${(currentDate.getMonth() + 1).toString().padStart(2, '0')}.${currentDate.getFullYear()} `;
             document.querySelector('#x').innerHTML = `${formattedDate} ${timerurl}`;
-
-            // Инициализация клонирования
-            cloneControlElements();
-
+            
             // Таймер
             var timerElement = document.getElementById("timer");
             var startDate = new Date(unixurl * 1000);
-            
             function updateTimer() {
                 var diff = new Date() - startDate;
                 var hours = Math.floor(diff / 3600000);
                 var minutes = Math.floor((diff - hours * 3600000) / 60000);
                 var seconds = Math.floor((diff - hours * 3600000 - minutes * 60000) / 1000);
-                timerElement.innerText = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+                timerElement.innerText = minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0');
             }
-            
             updateTimer();
             setInterval(updateTimer, 1000);
 
             // Загрузка маршрутов
             loadRoutes(transport, route);
-            
+
         } else {
             console.error("Нет данных в ответе");
-            // Если данных нет, показываем контейнер ввода
-            if (container) container.classList.replace('hidden', 'block');
-            if (fon) fon.classList.replace('hidden', 'block');
+            showContainer();
         }
     })
     .catch(error => {
         console.error("Ошибка загрузки данных:", error);
-        // При ошибке показываем контейнер ввода
-        if (container) container.classList.replace('hidden', 'block');
-        if (fon) fon.classList.replace('hidden', 'block');
+        showContainer();
     });
 }
 
@@ -255,21 +298,39 @@ function loadRoutes(transport, route) {
     .then(res => res.json())
     .then(routesData => {
         console.log("Маршруты загружены", routesData);
+
         const transportType = transport === "tram" ? "tram" : "bus";
         const routeNumber = route;
-        const routeInfo = routesData.find(r => r.route === routeNumber && r.transport === transportType);
+        const routeInfo = routesData.find(
+            r => r.route === routeNumber && r.transport === transportType
+        );
 
         if (routeInfo) {
             document.querySelector("#carrier_name").textContent = routeInfo.carrier;
             document.querySelector("#carrier_inn").textContent = routeInfo.inn;
             document.querySelector("#marshrutfont").textContent = routeInfo.routeName;
-            const transportText = routeInfo.transport === "tram" ? "Трамвай " : "Автобус ";
-            document.querySelectorAll(".transport_type").forEach(el => el.textContent = transportText);
-        } else {
-            console.warn("Маршрут не найден:", routeNumber, transportType);
+
+            const transportText =
+                routeInfo.transport === "tram" ? "Трамвай " : "Автобус ";
+            document
+                .querySelectorAll(".transport_type")
+                .forEach(el => el.textContent = transportText);
+                cloneControlElements();
+        }
+        
+        // СООБЩАЕМ ANDROID: СТРАНИЦА ГОТОВА
+        if (window.Android && typeof window.Android.pageReady === "function") {
+            window.Android.pageReady();
         }
     })
-    .catch(err => console.error("Ошибка загрузки routes.json", err));
+    .catch(err => {
+        console.error("Ошибка загрузки routes.json", err);
+
+        // даже при ошибке убираем splash, чтобы не завис
+        if (window.Android && typeof window.Android.pageReady === "function") {
+            window.Android.pageReady();
+        }
+    });
 }
 
 window.onload = function() {
@@ -301,6 +362,15 @@ window.onload = function() {
         rightImageElement.src = images[rightImageIndex];
     }
     
+    // Обновляем картинки темы после загрузки DOM
+    if (window.pendingThemeUpdate !== undefined) {
+        setTimeout(() => {
+            console.log("Обновление картинок темы после загрузки DOM");
+            updateThemeImages(window.pendingThemeUpdate);
+            delete window.pendingThemeUpdate;
+        }, 100);
+    }
+    
     // Добавляем обработчик события
     var passenElement = document.getElementById("passen");
     if (passenElement) {
@@ -310,4 +380,3 @@ window.onload = function() {
     // Проверяем userId и загружаем данные
     checkUserIdAndLoadData();
 };
-

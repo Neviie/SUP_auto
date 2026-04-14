@@ -749,8 +749,8 @@ historyleft.addEventListener('click', () => {
     }
 
     function getRandomDate() {
-        var startDate = new Date('2025-05-01T06:00:00');
-        var endDate = new Date('2025-06-10T23:59:59');
+        var startDate = new Date('2026-05-01T06:00:00');
+        var endDate = new Date('2026-06-10T23:59:59');
         var randomTimestamp = Math.floor(Math.random() * (endDate.getTime() - startDate.getTime() + 1)) + startDate.getTime();
         var randomDate = new Date(randomTimestamp);
         var formattedDate = randomDate.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -777,7 +777,7 @@ historyleft.addEventListener('click', () => {
         randomDate.className = 'random_date';
         randomDate.textContent = getRandomDate();
         var greenn = document.createElement('greenn');
-        greenn.innerHTML = '<img class= "green_img" src="/Assets/virtual_card.png">40 ₽ ';
+        greenn.innerHTML = '<img class= "green_img" src="/Assets/virtual_card.png">43 ₽ ';
         div.appendChild(greenbusBox);
         div.appendChild(randomDate);
         div.appendChild(greenn);
@@ -810,8 +810,8 @@ blue_box.addEventListener('click', () => {
     }
 
     function getRandomDate() {
-        var startDate = new Date('2025-05-01T06:00:00');
-        var endDate = new Date('2025-06-08T23:59:59');
+        var startDate = new Date('2026-05-01T06:00:00');
+        var endDate = new Date('2026-06-08T23:59:59');
         var randomTimestamp = Math.floor(Math.random() * (endDate.getTime() - startDate.getTime() + 1)) + startDate.getTime();
         var randomDate = new Date(randomTimestamp);
         var formattedDate = randomDate.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -834,7 +834,7 @@ blue_box.addEventListener('click', () => {
         randomDate.className = 'random_date';
         randomDate.textContent = getRandomDate();
         var greenn = document.createElement('greenn');
-        greenn.textContent = '+40 ₽';
+        greenn.textContent = '+43 ₽';
         div.appendChild(greenPaidBox);
         div.appendChild(randomDate);
         div.appendChild(greenn);

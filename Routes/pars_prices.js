@@ -55,17 +55,28 @@ async function parseRoutes(url) {
   return routes;
 }
 
-function expandRoutes(row, allRoutes) {
+function expandRoutes(row, busRoutes, tramRoutes) {
   const results = [];
 
   // ТРАМВАИ
   if (row.rawRoute.startsWith("ТМ")) {
-    const numbers = row.rawRoute
-      .replace("ТМ", "")
-      .split(",")
-      .map(n => n.trim());
+    // Извлекаем все числа из строки (например, "ТМ 2, 3, 4, 56, 7, 8, 11, 12" -> ["2","3","4","56","7","8","11","12"])
+    let numbers = row.rawRoute.replace("ТМ", "").match(/\d+/g) || [];
 
+    // Исправляем конкретную проблему: если есть "56", разбиваем на "5" и "6"
+    const fixedNumbers = [];
     numbers.forEach(num => {
+      if (num === "56") {
+        fixedNumbers.push("5", "6");
+      } else {
+        fixedNumbers.push(num);
+      }
+    });
+
+    // Убираем возможные дубликаты (на случай, если 5 и 6 уже были отдельно)
+    const uniqueNumbers = [...new Set(fixedNumbers)];
+
+    uniqueNumbers.forEach(num => {
       results.push({
         route: num,
         transport: "tram",
@@ -73,14 +84,14 @@ function expandRoutes(row, allRoutes) {
         phones: row.phones,
         emails: row.emails,
         inn: row.inn,
-        routeName: allRoutes[num] || null
+        routeName: tramRoutes[num] || null   // если название не найдено, останется null
       });
     });
 
     return results;
   }
 
-  // АВТОБУСЫ (1, 1А, 300Т и т.п.)
+  // АВТОБУСЫ (без изменений)
   results.push({
     route: row.rawRoute,
     transport: "bus",
@@ -88,7 +99,7 @@ function expandRoutes(row, allRoutes) {
     phones: row.phones,
     emails: row.emails,
     inn: row.inn,
-    routeName: allRoutes[row.rawRoute] || null
+    routeName: busRoutes[row.rawRoute] || null
   });
 
   return results;
@@ -100,12 +111,11 @@ function expandRoutes(row, allRoutes) {
 
     const busRoutes = await parseRoutes(BUS_ROUTES_URL);
     const tramRoutes = await parseRoutes(TRAM_ROUTES_URL);
-    const allRoutes = { ...busRoutes, ...tramRoutes };
 
     const result = [];
 
     carriers.forEach(row => {
-      result.push(...expandRoutes(row, allRoutes));
+      result.push(...expandRoutes(row, busRoutes, tramRoutes));
     });
 
     fs.writeFileSync(
@@ -114,7 +124,7 @@ function expandRoutes(row, allRoutes) {
       "utf8"
     );
 
-    console.log("✅ routes.json создан (автобусы + трамваи)");
+    console.log("✅ routes.json создан (с исправлением для 56 трамвая)");
     process.exit(0);
   } catch (e) {
     console.error("❌ Ошибка:", e.message);
