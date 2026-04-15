@@ -748,51 +748,80 @@ historyleft.addEventListener('click', () => {
         return randomNumber;
     }
 
-// Возвращает случайную дату с временем 6:00 утра в диапазоне от monthsAgo месяцев назад до сегодня
-function getRandomDateFixedTime(monthsAgo = 2) {
+// Генерирует случайную дату и время в диапазоне:
+// дата: от monthsAgo месяцев назад до сегодня
+// время: от 6:00 до 22:00, но для сегодня – не позже текущего времени
+function getRandomDateTime(monthsAgo = 2) {
+    var now = new Date();
     var startDate = new Date();
     startDate.setMonth(startDate.getMonth() - monthsAgo);
-    startDate.setHours(6, 0, 0, 0);        // 6:00 утра
+    startDate.setHours(6, 0, 0, 0);          // начало диапазона – 6:00
 
-    var endDate = new Date();
-    endDate.setHours(6, 0, 0, 0);          // также 6:00 утра (чтобы включить сегодняшний день)
-
-    // Количество миллисекунд в одном дне
+    // Случайная дата (количество дней от startDate до now)
     var oneDay = 24 * 60 * 60 * 1000;
-    var daysDiff = Math.floor((endDate - startDate) / oneDay);
+    var daysDiff = Math.floor((now - startDate) / oneDay);
     if (daysDiff < 0) daysDiff = 0;
-
     var randomDays = Math.floor(Math.random() * (daysDiff + 1));
-    var resultDate = new Date(startDate.getTime() + randomDays * oneDay);
-    resultDate.setHours(6, 0, 0, 0);       // фиксируем 6:00
-    return resultDate;
+    var baseDate = new Date(startDate.getTime() + randomDays * oneDay);
+    baseDate.setHours(0, 0, 0, 0);           // обнуляем время, оставляем только дату
+
+    // Генерация случайного времени от 6:00 до 22:00
+    var minHour = 6, maxHour = 22;
+    var randomHour = Math.floor(Math.random() * (maxHour - minHour + 1)) + minHour;
+    var randomMinute = Math.floor(Math.random() * 60);
+    // Если час = 22, минуты должны быть 0 (22:00), иначе можно любые
+    if (randomHour === 22) randomMinute = 0;
+
+    baseDate.setHours(randomHour, randomMinute, 0, 0);
+
+    // Если получившаяся дата – сегодня, но время больше текущего, то откатываем на час назад (или на 22:00, если перебор)
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (baseDate.getTime() >= today.getTime() && baseDate > now) {
+        // Просто ставим время 21:00 или уменьшаем час
+        baseDate.setHours(21, 0, 0, 0);
+        if (baseDate > now) baseDate.setHours(20, 0, 0, 0);
+    }
+    return baseDate;
 }
 
-// Форматирование
-function formatDate(date) {
+// Форматирование даты и времени
+function formatDateTime(date) {
     var formattedDate = date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
     var formattedTime = date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
     return formattedDate + ' ' + formattedTime;
 }
 
-// Остальные функции (getRandomNumber и т.д.) без изменений
+// Пример getRandomNumber (подставьте свою)
+function getRandomNumber(min, max, excludeArr) {
+    var num;
+    do {
+        num = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (excludeArr.includes(num));
+    return num;
+}
 
 var historyBox = document.querySelector('.history_box');
-var thresholdDate = new Date(2026, 4, 15); // 15 апреля 2026
-var numDivs = 10;
+var thresholdDate = new Date(2026, 3, 15); // 15 апреля 2026
+var numDivs = 10; // нужное количество поездок
 
 var items = [];
 for (var i = 0; i < numDivs; i++) {
-    var dateObj = getRandomDateFixedTime(2);
+    var dateObj = getRandomDateTime(2);
     var price = dateObj < thresholdDate ? 40 : 43;
     var busNumber = getRandomNumber(1, 80, [2, 31, 42, 43, 66, 72, 76, 78, 79]);
-    items.push({ date: dateObj, formatted: formatDate(dateObj), price: price, busNumber: busNumber });
+    items.push({
+        date: dateObj,
+        formatted: formatDateTime(dateObj),
+        price: price,
+        busNumber: busNumber
+    });
 }
 
 // Сортировка по дате (старые сверху)
 items.sort(function(a, b) { return b.date - a.date; });
 
-// Отрисовка (без изменений)
+// Отрисовка
 for (var i = 0; i < items.length; i++) {
     var item = items[i];
     var div = document.createElement('div');
