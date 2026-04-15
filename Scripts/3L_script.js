@@ -748,41 +748,75 @@ historyleft.addEventListener('click', () => {
         return randomNumber;
     }
 
-    function getRandomDate() {
-        var startDate = new Date('2026-05-01T06:00:00');
-        var endDate = new Date('2026-06-10T23:59:59');
-        var randomTimestamp = Math.floor(Math.random() * (endDate.getTime() - startDate.getTime() + 1)) + startDate.getTime();
-        var randomDate = new Date(randomTimestamp);
-        var formattedDate = randomDate.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        var formattedTime = randomDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-        return formattedDate + ' ' + formattedTime;
-    }
+// Возвращает случайную дату с временем 6:00 утра в диапазоне от monthsAgo месяцев назад до сегодня
+function getRandomDateFixedTime(monthsAgo = 2) {
+    var startDate = new Date();
+    startDate.setMonth(startDate.getMonth() - monthsAgo);
+    startDate.setHours(6, 0, 0, 0);        // 6:00 утра
 
-    var historyBox = document.querySelector('.history_box');
+    var endDate = new Date();
+    endDate.setHours(6, 0, 0, 0);          // также 6:00 утра (чтобы включить сегодняшний день)
 
-    for (var i = 0; i < numDivs; i++) {
-        var div = document.createElement('div');
-        div.className = 'history_line';
-        var greenbusBox = document.createElement('div');
-        greenbusBox.className = 'greenbus_box';
-        var greenBoxBus = document.createElement('img');
-        greenBoxBus.className = 'green_box_bus';
-        greenBoxBus.src = '/Assets/Green_Bus.png';
-        var greenbusBoxNum = document.createElement('span');
-        greenbusBoxNum.className = 'greenbus_box_num';
-        greenbusBoxNum.textContent = getRandomNumber(1, 80, [2, 31, 42, 43, 66, 72, 76, 78, 79]);
-        greenbusBox.appendChild(greenBoxBus);
-        greenbusBox.appendChild(greenbusBoxNum);
-        var randomDate = document.createElement('span');
-        randomDate.className = 'random_date';
-        randomDate.textContent = getRandomDate();
-        var greenn = document.createElement('greenn');
-        greenn.innerHTML = '<img class= "green_img" src="/Assets/virtual_card.png">43 ₽ ';
-        div.appendChild(greenbusBox);
-        div.appendChild(randomDate);
-        div.appendChild(greenn);
-        historyBox.appendChild(div);
-    }
+    // Количество миллисекунд в одном дне
+    var oneDay = 24 * 60 * 60 * 1000;
+    var daysDiff = Math.floor((endDate - startDate) / oneDay);
+    if (daysDiff < 0) daysDiff = 0;
+
+    var randomDays = Math.floor(Math.random() * (daysDiff + 1));
+    var resultDate = new Date(startDate.getTime() + randomDays * oneDay);
+    resultDate.setHours(6, 0, 0, 0);       // фиксируем 6:00
+    return resultDate;
+}
+
+// Форматирование
+function formatDate(date) {
+    var formattedDate = date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    var formattedTime = date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+    return formattedDate + ' ' + formattedTime;
+}
+
+// Остальные функции (getRandomNumber и т.д.) без изменений
+
+var historyBox = document.querySelector('.history_box');
+var thresholdDate = new Date(2026, 4, 15); // 15 апреля 2026
+var numDivs = 10;
+
+var items = [];
+for (var i = 0; i < numDivs; i++) {
+    var dateObj = getRandomDateFixedTime(2);
+    var price = dateObj < thresholdDate ? 40 : 43;
+    var busNumber = getRandomNumber(1, 80, [2, 31, 42, 43, 66, 72, 76, 78, 79]);
+    items.push({ date: dateObj, formatted: formatDate(dateObj), price: price, busNumber: busNumber });
+}
+
+// Сортировка по дате (старые сверху)
+items.sort(function(a, b) { return b.date - a.date; });
+
+// Отрисовка (без изменений)
+for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    var div = document.createElement('div');
+    div.className = 'history_line';
+    var greenbusBox = document.createElement('div');
+    greenbusBox.className = 'greenbus_box';
+    var greenBoxBus = document.createElement('img');
+    greenBoxBus.className = 'green_box_bus';
+    greenBoxBus.src = '/Assets/Green_Bus.png';
+    var greenbusBoxNum = document.createElement('span');
+    greenbusBoxNum.className = 'greenbus_box_num';
+    greenbusBoxNum.textContent = item.busNumber;
+    greenbusBox.appendChild(greenBoxBus);
+    greenbusBox.appendChild(greenbusBoxNum);
+    var randomDateSpan = document.createElement('span');
+    randomDateSpan.className = 'random_date';
+    randomDateSpan.textContent = item.formatted;
+    var greenn = document.createElement('greenn');
+    greenn.innerHTML = '<img class="green_img" src="/Assets/virtual_card.png">' + item.price + ' ₽';
+    div.appendChild(greenbusBox);
+    div.appendChild(randomDateSpan);
+    div.appendChild(greenn);
+    historyBox.appendChild(div);
+}
 
     var marshrut = document.getElementById('marshrutt');
     var marshrut_duble = document.getElementById('duble_marsh');
