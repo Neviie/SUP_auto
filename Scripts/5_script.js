@@ -43,7 +43,7 @@ window.randomNumber16 = '9' + Math.floor(Math.random() * 9 + 1) + Math.floor(Mat
 })();
 
 function getRandomNumber() {
-    var numbers = [0, 40, 80];
+    var numbers = [0, 43, 86];
     return numbers[Math.floor(Math.random() * numbers.length)];
 }
 
@@ -176,7 +176,7 @@ function cloneControlElements() {
 
     var oplataElement = document.getElementById("oplata");
     var bagsValue = parseInt(document.getElementById("bags").innerText);
-    var result = (passenValue + bagsValue) * 40;
+    var result = (passenValue + bagsValue) * 43;
     var greenspan = document.getElementById("greenpass");
     oplataElement.textContent = result;
     greenspan.textContent = result;
@@ -186,7 +186,7 @@ function update2Number() {
     var numberElement = document.getElementById('number');
     var numberElement2 = document.getElementById('number2');
     var currentNumber = parseInt(numberElement.textContent);
-    var numbers = [0, 40, 80];
+    var numbers = [0, 43, 86];
     var nextNumberIndex = numbers.indexOf(currentNumber) + 1;
     if (nextNumberIndex >= numbers.length) nextNumberIndex = 0;
     numberElement.textContent = numbers[nextNumberIndex];
