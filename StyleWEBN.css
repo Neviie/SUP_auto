@@ -679,7 +679,7 @@
 		bottom: 8%;
 		border-left: solid 2vw red;
 		padding-left: 2vw;
-		justify-content: center;
+		justify-content: flex-start;
 		transition: opacity 0.1s
 		} 
 
