@@ -626,6 +626,36 @@ background-image: url(https://proezdnoy59.files.wordpress.com/2022/05/fon.png);
 		display: none;
 		}
 
+			.new_no_control {
+		text-align: left;
+		font-family: roboto;
+		background-color: gray;
+		Width: 87vw;
+		height: 7vh;
+		border-radius: 1vw;
+		display: flex;
+		opacity: 0;
+		align-items: center;
+		margin: 0.8854vh auto 0.8854vh auto;
+		box-shadow: 0 0 0.8854vh rgba(0, 0, 0, 0.2);
+		position: fixed;
+		z-index: 1;
+		margin: auto;
+		transform: translate(-50%);
+		left: 50%;
+		bottom: 8%;
+		border-left: solid 2vw red;
+		padding-left: 2vw;
+		justify-content: center;
+		transition: opacity 0.1s
+		} 
+
+		.new_no_control p {
+			    font-size: calc(1vw + 1vh);
+    			color: white;
+				text-align: justify; 
+		}
+
 		.new_control.none {
 			display: none;
 			}

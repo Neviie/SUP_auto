@@ -414,12 +414,20 @@ function handleClick4() {
     backproezdnoyfontElement.style.color = getThemeColors().inactive;
 }
 
-function showNewControl() {
-    var buttonElement = document.getElementById('button');
-    var newControlElement = document.querySelector('.new_control');
+// function showNewControl() {
+//     var buttonElement = document.getElementById('button');
+//     var newControlElement = document.querySelector('.new_control');
 
-    buttonElement.style.display = 'none';
-    newControlElement.style.display = 'block';
+//     buttonElement.style.display = 'none';
+//     newControlElement.style.display = 'block';
+// }
+
+function showNewControl() {
+    var newControlElement = document.querySelector('.new_no_control');
+    newControlElement.style.opacity = '1';
+    setTimeout(function() {
+        newControlElement.style.opacity = '0';
+    }, 5000);
 }
 
 const leftMenu = document.getElementById('left_menu');
